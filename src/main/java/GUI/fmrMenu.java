@@ -2,6 +2,8 @@ package GUI;
 
 import java.awt.Dimension;
 import javax.swing.JDesktopPane;
+import javax.swing.JInternalFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -23,7 +25,7 @@ public class fmrMenu extends javax.swing.JFrame {
 
         int ancho = java.awt.Toolkit.getDefaultToolkit().getScreenSize().width;
         int alto = java.awt.Toolkit.getDefaultToolkit().getScreenSize().height;
-        fmrMenu.jDesktopPane_menu.setBounds(0,0,ancho,(alto-110));
+        fmrMenu.jDesktopPane_menu.setBounds(0, 0, ancho, (alto - 110));
         this.add(jDesktopPane_menu);
 
     }
@@ -61,6 +63,8 @@ public class fmrMenu extends javax.swing.JFrame {
         jMenuItem_verInventario = new javax.swing.JMenuItem();
         jMenu_dinero = new javax.swing.JMenu();
         jMenu_salir = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -69,6 +73,7 @@ public class fmrMenu extends javax.swing.JFrame {
         jMenu_usuario.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jMenu_usuario.setPreferredSize(new java.awt.Dimension(150, 50));
 
+        jMenuItem_nuevoUsuario.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         jMenuItem_nuevoUsuario.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jMenuItem_nuevoUsuario.setText("Nuevo usuario");
         jMenuItem_nuevoUsuario.setPreferredSize(new java.awt.Dimension(180, 30));
@@ -82,11 +87,6 @@ public class fmrMenu extends javax.swing.JFrame {
         jMenuItem_gestionarUsuario.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jMenuItem_gestionarUsuario.setText("Gestionar Usuarios");
         jMenuItem_gestionarUsuario.setPreferredSize(new java.awt.Dimension(180, 30));
-        jMenuItem_gestionarUsuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem_gestionarUsuarioActionPerformed(evt);
-            }
-        });
         jMenu_usuario.add(jMenuItem_gestionarUsuario);
 
         jMenuBar1.add(jMenu_usuario);
@@ -113,9 +113,15 @@ public class fmrMenu extends javax.swing.JFrame {
         jMenu_ventas.add(jMenuItem_cobrosPendientes);
         jMenu_ventas.add(jSeparator1);
 
+        jMenuItem_crearClientes.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_M, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         jMenuItem_crearClientes.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jMenuItem_crearClientes.setText("Crear Cliente");
         jMenuItem_crearClientes.setPreferredSize(new java.awt.Dimension(180, 30));
+        jMenuItem_crearClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem_crearClientesActionPerformed(evt);
+            }
+        });
         jMenu_ventas.add(jMenuItem_crearClientes);
 
         jMenuItem_gestionarClientes.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -136,9 +142,15 @@ public class fmrMenu extends javax.swing.JFrame {
         jMenu_compras.add(jMenuItem_facturarCompra);
         jMenu_compras.add(jSeparator3);
 
+        jMenuItem_crearProveedor.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_D, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         jMenuItem_crearProveedor.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jMenuItem_crearProveedor.setText("Crear Proveedor");
         jMenuItem_crearProveedor.setPreferredSize(new java.awt.Dimension(180, 30));
+        jMenuItem_crearProveedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem_crearProveedorActionPerformed(evt);
+            }
+        });
         jMenu_compras.add(jMenuItem_crearProveedor);
 
         jMenuItem_gestionarProveedor.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -153,9 +165,15 @@ public class fmrMenu extends javax.swing.JFrame {
         jMenu_inventario.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jMenu_inventario.setPreferredSize(new java.awt.Dimension(150, 50));
 
+        jMenuItem_crearArticulo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_B, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         jMenuItem_crearArticulo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jMenuItem_crearArticulo.setText("Crear Artículo");
         jMenuItem_crearArticulo.setPreferredSize(new java.awt.Dimension(180, 30));
+        jMenuItem_crearArticulo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem_crearArticuloActionPerformed(evt);
+            }
+        });
         jMenu_inventario.add(jMenuItem_crearArticulo);
 
         jMenuItem_gestionarArticulo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -178,9 +196,31 @@ public class fmrMenu extends javax.swing.JFrame {
         jMenuBar1.add(jMenu_dinero);
 
         jMenu_salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cerrar-sesion.png"))); // NOI18N
-        jMenu_salir.setText("Salir");
+        jMenu_salir.setText("Cerrar");
         jMenu_salir.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jMenu_salir.setPreferredSize(new java.awt.Dimension(150, 50));
+
+        jMenuItem1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jMenuItem1.setText("Salir");
+        jMenuItem1.setPreferredSize(new java.awt.Dimension(180, 30));
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu_salir.add(jMenuItem1);
+
+        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_ENTER, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        jMenuItem2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jMenuItem2.setText("Cerrar Ventanas");
+        jMenuItem2.setPreferredSize(new java.awt.Dimension(180, 30));
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu_salir.add(jMenuItem2);
+
         jMenuBar1.add(jMenu_salir);
 
         setJMenuBar(jMenuBar1);
@@ -199,15 +239,43 @@ public class fmrMenu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem_gestionarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_gestionarUsuarioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem_gestionarUsuarioActionPerformed
-
     private void jMenuItem_nuevoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_nuevoUsuarioActionPerformed
         JInternalFrameCrearUsuario crearUsuario = new JInternalFrameCrearUsuario();
         jDesktopPane_menu.add(crearUsuario);
         crearUsuario.setVisible(true);
     }//GEN-LAST:event_jMenuItem_nuevoUsuarioActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        int confirmed = JOptionPane.showConfirmDialog(this, "¿Estás seguro de que quieres salir?", "Confirmar Salida", JOptionPane.YES_NO_OPTION);
+        if (confirmed == JOptionPane.YES_OPTION) {
+            System.exit(0);
+        }
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem_crearArticuloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_crearArticuloActionPerformed
+        JInternalFrameCrearArticulo crearArticulo = new JInternalFrameCrearArticulo();
+        jDesktopPane_menu.add(crearArticulo);
+        crearArticulo.setVisible(true);
+    }//GEN-LAST:event_jMenuItem_crearArticuloActionPerformed
+
+    private void jMenuItem_crearProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_crearProveedorActionPerformed
+        JInternalFrameCrearProveedor crearProveedor = new JInternalFrameCrearProveedor();
+        jDesktopPane_menu.add(crearProveedor);
+        crearProveedor.setVisible(true);
+    }//GEN-LAST:event_jMenuItem_crearProveedorActionPerformed
+
+    private void jMenuItem_crearClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_crearClientesActionPerformed
+        JInternalFrameCrearCliente crearCliente = new JInternalFrameCrearCliente();
+        jDesktopPane_menu.add(crearCliente);
+        crearCliente.setVisible(true);
+    }//GEN-LAST:event_jMenuItem_crearClientesActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        JInternalFrame[] frames = jDesktopPane_menu.getAllFrames();
+        for (JInternalFrame frame : frames) {
+            frame.dispose();
+        }
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -246,6 +314,8 @@ public class fmrMenu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem_cobrosPendientes;
     private javax.swing.JMenuItem jMenuItem_crearArticulo;
     private javax.swing.JMenuItem jMenuItem_crearClientes;
