@@ -220,7 +220,10 @@ public class Login extends javax.swing.JFrame {
 
     private void Ingresar() {
         if(!txtUsuario.getText().isEmpty() && !txtPassword.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null, "Hola, esta es una ventana emergente!");
+            //JOptionPane.showMessageDialog(null, "Hola, esta es una ventana emergente!");
+            fmrMenu menu = new fmrMenu();
+            menu.setVisible(true);
+            this.dispose();
         }else{
             JOptionPane.showMessageDialog(null, "Debe colocar nombre de usuario y contraseña.", "Error", JOptionPane.ERROR_MESSAGE);
         }
